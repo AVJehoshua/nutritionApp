@@ -1,8 +1,19 @@
-# React + Vite
+# Nutrition-APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the Frontend repository for our application, Munchie Monsters.
 
-Currently, two official plugins are available:
+Munchie Monsters is an educational nutrition app, where users can interactively learn more about the foods they consume every day.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application uses a MERN stack.
+
+to get started, please run the following commands:
+
+Install dependencies
+```
+npm install
+```
+
+Start the server
+```
+npm run dev
+```
