@@ -1,0 +1,51 @@
+.landingContainerLeft {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+}
+.landingContainerRight {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.landingImage img {
+  margin-bottom: 20px; /* Added margin at the bottom to separate from the text */
+}
+
+.landingContent {
+  text-align: center; /* Center aligning the content */
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signUpButton {
+  margin-top: 330px;
+}
+
+.landingPara a{
+  color: green;
+}
+
+.landingPara a:hover {
+  color: darkgreen;
+}
+
+
+.signUpButton button {
+  background-color: green; 
+  color: white; 
+  padding: 20px 70px; 
+  font-size: 16px; 
+  border: none; 
+  cursor: pointer; 
+  border-radius: 10px;
+  text-align: center;
+}
+
+.signUpButton button:hover {
+  background-color: darkgreen; 
+}
