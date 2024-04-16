@@ -1,9 +1,114 @@
-export const SignUpPage = () => {
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+// import { signUpUser } from "../../services/authentication";
 
 
-  return (
-    <>
-    <h1>This is the signup page!</h1>
-    </>
-  )
-}
+export const SignUpPage = ({ setToken }) => {
+    document.title = "Sign Up";
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [email, setEmail] = useState('');
+    const [isSignedIn, setIsSignedIn] = useState(false);
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        console.log("current signed in status: ", isSignedIn)
+    },[isSignedIn])
+
+
+    // checks for valid email
+    function isValidEmail(email) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+    }
+
+    // checks for valid password
+    function isValidPassword(password) {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordRegex.test(password);
+    }
+
+    // handles submit
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        console.log("initial isSignedIn status: ", isSignedIn)
+        console.log("submitting form");
+
+        if (!isValidEmail(email)) {
+            console.log("Unable to validate email");
+            alert("Inavlid Email!")
+            return setErrorMessage("Invalid email address");
+        }
+
+        if (!isValidPassword(password)) {
+            console.log("Unable to validate password");
+            alert("Invalid Password!")
+            return setErrorMessage("Invalid password!");
+        }
+
+        try {
+            console.log("Form successfully submitted to B/E")
+            const payload = {
+                email: email,
+                password: password,
+            };
+            
+            // const response = await signUpUser(payload.email, payload.password)
+            const response =  {
+                email: payload.email, 
+                password: payload.password
+            }
+
+            console.log("server response:", response)
+
+            if (response.ok) {
+                console.log("redirecting to homepage");
+                console.log("sign in status change -> true")
+                setIsSignedIn(true)
+                navigate("/login");
+            } else if (response.status === 409) {
+                setErrorMessage("Email already in use");
+            } else {
+                console.error("Server error:", response.statusText);
+                navigate("/signup");
+            }
+        } catch (err) {
+            console.error("error occurred:", err);
+            navigate("/signup");
+        }
+    };
+
+    return (
+        <>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="email"> <span>Email </span></label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter email"
+                        value={email}  // Bind the value of the input to the email state
+                        onChange={(e) => setEmail(e.target.value)}  // Update the email state when input changes
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password"> <span> Password </span></label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="Password"
+                        value={password}  // Bind the value of the input to the password state
+                        onChange={(e) => setPassword(e.target.value)}  // Update the password state when input changes
+                    />
+                </div>
+                <button type="submit" className="btn btn-primary"> Submit</button>
+            </form>
+        </>
+    );
+};
+
+    
