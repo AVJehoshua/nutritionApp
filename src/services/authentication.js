@@ -1,4 +1,4 @@
-import { l } from "vite/dist/node/types.d-aGj9QkWt";
+// import { l } from "vite/dist/node/types.d-aGj9QkWt";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -14,7 +14,7 @@ export const signUpUser = async (email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload)
-  }
+  };
 
   let response = await fetch(`${BACKEND_URL}/users`, requestOptions);
 

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-// import { signUpUser } from "../../services/authentication";
+import { signUpUser } from "../../services/authentication";
 
 
 export const SignUpPage = ({ setToken }) => {
     document.title = "Sign Up";
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [email, setEmail] = useState('');
     const [isSignedIn, setIsSignedIn] = useState(false);
     const navigate = useNavigate();
 
@@ -54,28 +54,28 @@ export const SignUpPage = ({ setToken }) => {
                 password: password,
             };
             
-            // const response = await signUpUser(payload.email, payload.password)
-            const response =  {
-                email: payload.email, 
-                password: payload.password
-            }
+            const response = await signUpUser(payload.email, payload.password)
+            //     const response =  {
+            //     email: payload.email, 
+            //     password: payload.password
+            // }
 
             console.log("server response:", response)
 
             if (response.ok) {
                 console.log("redirecting to homepage");
                 console.log("sign in status change -> true")
-                setIsSignedIn(true)
                 navigate("/login");
+                setIsSignedIn(true)
             } else if (response.status === 409) {
                 setErrorMessage("Email already in use");
             } else {
-                console.error("Server error:", response.statusText);
                 navigate("/signup");
+                console.error("Server error:", response.statusText);
             }
         } catch (err) {
-            console.error("error occurred:", err);
             navigate("/signup");
+            console.error("error occurred:", err);
         }
     };
 
@@ -83,7 +83,7 @@ export const SignUpPage = ({ setToken }) => {
         <>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="email"> <span>Email </span></label>
+                    <label htmlFor="email"> <span> Email </span></label>
                     <input
                         type="email"
                         className="form-control"
@@ -94,6 +94,7 @@ export const SignUpPage = ({ setToken }) => {
                         onChange={(e) => setEmail(e.target.value)}  // Update the email state when input changes
                     />
                 </div>
+                <br></br>
                 <div className="form-group">
                     <label htmlFor="password"> <span> Password </span></label>
                     <input
@@ -105,7 +106,8 @@ export const SignUpPage = ({ setToken }) => {
                         onChange={(e) => setPassword(e.target.value)}  // Update the password state when input changes
                     />
                 </div>
-                <button type="submit" className="btn btn-primary"> Submit</button>
+                <br></br>
+                <button type="submit" className="btn btn-primary"> Submit </button>
             </form>
         </>
     );
