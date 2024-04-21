@@ -8,7 +8,7 @@ export const LandingPage = () => {
     <>
       <div className="landingContainerLeft">
         <div className="landingImage">
-          <img src="src/assets/LPfood.jpg" alt="food bowl" height={300} />
+          <img src="src/assets/eating_page1_1.svg" alt="food bowl" height={300} />
         </div>
 
         <div className="landingContent">
@@ -25,7 +25,7 @@ export const LandingPage = () => {
 
       <div className="landingContainerRight">
         <div className="landingImage">
-          <img src="src/assets/LPfood.jpg" alt="food bowl" height={300} />
+          <img src="src/assets/eating_page1_2.svg" alt="food bowl" height={300} />
         </div>
         <div className="landingContent">
           <div className="landingHeading">
