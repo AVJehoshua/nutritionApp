@@ -6,7 +6,7 @@ import { LogInPage } from "./pages/logInPage/logIn";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <LandingPage />,
   },
 
