@@ -81,6 +81,8 @@ export const SignUpPage = ({ setToken }) => {
 
     return (
         <>
+
+        <h1>Sign Up!</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="email"> <span> Email </span></label>

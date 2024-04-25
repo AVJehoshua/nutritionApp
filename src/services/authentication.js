@@ -27,3 +27,31 @@ export const signUpUser = async (email, password) => {
     );
   }
 };
+
+export const loginUser = async (email, password) => {
+  const payload = {
+    email: email,
+    password: password,
+  };
+
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  let response = await fetch(`${BACKEND_URL}/tokens`, requestOptions);
+
+  // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
+  if (response.status === 201) {
+    let data = await response.json();
+    return [data.token, data.id];
+  } else {
+    console.log(response)
+    throw new Error(
+      `Received status ${response.status} when logging in. Expected 201`
+    );
+  }
+};
