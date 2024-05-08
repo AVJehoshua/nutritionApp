@@ -1,0 +1,21 @@
+/* Group 20 */
+
+.wheel-pie01 {
+  display: flexbox;
+  width: 246.53px;
+  height: 261.98px;
+  left: 470.02px;
+  top: 372.53px;
+  background:rgba(238, 82, 64, 1);
+  border: 5px solid #000000;
+  }
+  .wheel-pie02 {
+    display: flexbox;
+  width: 246.53px;
+  height: 261.98px;
+  left: 470.02px;
+  top: 372.53px;
+  border: 5px solid #000000;
+  background-color: rgba(145, 199, 136, 1) /* Fill color */
+  }
+

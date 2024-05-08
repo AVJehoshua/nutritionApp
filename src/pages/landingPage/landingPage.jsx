@@ -22,7 +22,6 @@ export const LandingPage = () => {
           </div>
         </div>
       </div>
-
       <div className="landingContainerRight">
         <div className="landingImage">
           <img src="src/assets/eating_page1_2.svg" alt="food bowl" height={300} />
@@ -42,12 +41,9 @@ export const LandingPage = () => {
       <div className="signUpButton">
         <button onClick={() => navigate("/signup")}> Get Started </button>
       </div>
-
       <div className="landingPara">
         <p> Already Have An Account? <a href="/login"> Log in!</a></p>
       </div>
-
-      
     </>
   );
 };
